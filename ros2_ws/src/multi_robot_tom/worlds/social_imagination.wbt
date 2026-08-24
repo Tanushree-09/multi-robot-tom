@@ -1,0 +1,214 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+
+
+WorldInfo {
+  basicTimeStep 32
+}
+
+Viewpoint {
+  orientation 0.5774 -0.5774 -0.5774 2.0944
+  position 0 14 14
+}
+
+TexturedBackground {
+}
+
+TexturedBackgroundLight {
+}
+
+Floor {
+  size 20 20
+}
+
+
+# ============================================================
+# ENVIRONMENT
+# ============================================================
+
+# Left wall
+DEF WALL_LEFT Solid {
+  name "wall_left"
+  translation -6 1 -2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.5 0.5 0.5
+      }
+      geometry Box {
+        size 0.3 2 12
+      }
+    }
+  ]
+}
+
+# Right wall
+DEF WALL_RIGHT Solid {
+  name "wall_right"
+  translation 6 1 -2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.5 0.5 0.5
+      }
+      geometry Box {
+        size 0.3 2 12
+      }
+    }
+  ]
+}
+
+# Back wall
+DEF WALL_BACK Solid {
+  name "wall_back"
+  translation 0 1 -8
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.5 0.5 0.5
+      }
+      geometry Box {
+        size 12 2 0.3
+      }
+    }
+  ]
+}
+
+# Central obstacle / information barrier
+DEF CENTRAL_WALL Solid {
+  name "central_wall"
+  translation 0 1 -2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.35 0.35 0.35
+      }
+      geometry Box {
+        size 5 2 0.3
+      }
+    }
+  ]
+}
+
+
+# ============================================================
+# TARGET OBJECT
+# ============================================================
+
+DEF TARGET Solid {
+  translation 3 0.35 -5
+  name "target_object"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0.8 0
+      }
+      geometry Cylinder {
+        radius 0.35
+        height 0.7
+      }
+    }
+  ]
+}
+
+
+# ============================================================
+# ROBOT A
+# ============================================================
+
+DEF ROBOT_A Robot {
+  translation -4 0.35 0
+  name "robot_A"
+  controller "<extern>"
+
+  children [
+
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.1 0.3 0.9
+      }
+      geometry Box {
+        size 0.7 0.7 0.7
+      }
+    }
+
+    DistanceSensor {
+      name "front_sensor"
+      translation 0 0 -0.4
+      rotation 0 1 0 0
+      lookupTable [
+        0 0 0
+        5 5 0
+      ]
+    }
+  ]
+}
+
+
+# ============================================================
+# ROBOT B
+# ============================================================
+
+DEF ROBOT_B Robot {
+  translation 0 0.35 0
+  name "robot_B"
+  controller "<extern>"
+
+  children [
+
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.1 0.8 0.2
+      }
+      geometry Box {
+        size 0.7 0.7 0.7
+      }
+    }
+
+    DistanceSensor {
+      name "front_sensor"
+      translation 0 0 -0.4
+      rotation 0 1 0 0
+      lookupTable [
+        0 0 0
+        5 5 0
+      ]
+    }
+  ]
+}
+
+
+# ============================================================
+# ROBOT C
+# ============================================================
+
+DEF ROBOT_C Robot {
+  translation 4 0.35 0
+  name "robot_C"
+  controller "<extern>"
+
+  children [
+
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.2 0.2
+      }
+      geometry Box {
+        size 0.7 0.7 0.7
+      }
+    }
+
+    DistanceSensor {
+      name "front_sensor"
+      translation 0 0 -0.4
+      rotation 0 1 0 0
+      lookupTable [
+        0 0 0
+        5 5 0
+      ]
+    }
+  ]
+}
